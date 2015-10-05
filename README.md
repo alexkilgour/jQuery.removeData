@@ -9,15 +9,17 @@ Call the ```removeData()``` method on any element with a data attribute.
 <div data-foo="selector" data-bar="value">content</div>
 ```
 
-**jQuery - Remove just data cache (original behaviour)**
+**jQuery**  
+remove just data cache (original behaviour)  
 ```javascript
-$('div[data-foo=selector]').removeData('data-bar');
+$('div[data-foo=selector]').removeData('data-bar');  
 $('div[data-foo=selector]').removeData('bar');
 ```
 
-**jQuery - Removes data cache and attribute**
+**jQuery**  
+removes data cache and attribute  
 ```javascript
-$('div[data-foo=selector]').removeData('data-bar', true);
+$('div[data-foo=selector]').removeData('data-bar', true);  
 $('div[data-foo=selector]').removeData('bar', true);
 ```
 
