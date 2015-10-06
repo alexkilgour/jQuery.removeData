@@ -12,33 +12,34 @@
 (function($) {
 	var oldRemoveData = $.fn.removeData;
 	$.fn.removeData = function(key, removeAttr) {
-		var keyData;
-		var keyNoData;
+		// convert key values of type string to array
+		if (typeof key === 'string') {
+			key = key.split(' ');
+		}
 
-		// get key name with and without data-
-		if (key.substr(0, 5) !== 'data-') {
-			keyData = 'data-' + key;
-			keyNoData = key;
-		} else {
-			keyData = key;
-			keyNoData = key.substring(5);
-			key = keyNoData; // jQuery method requires key without data-
+		if (typeof key !== 'undefined' && key && key.constructor === Array) {
+			for (var i = 0, len = key.length; i < len; i++) {
+				// remove data- if present
+				if (key[i].substr(0, 5) === 'data-') {
+					key[i] = key[i].substring(5);
+				}
+
+				// if true is set, also remove attribute from element
+				if (removeAttr) {
+					var $self = $(this);
+
+					// remove from all matching elements
+					$self.each(function() {
+						$(this).removeAttr('data-' + key[i]);
+					});
+				}
+			}
 		}
 
 		// original behavior, preserve context
-		var ret = oldRemoveData.apply(this, arguments);
+		var original = oldRemoveData.apply(this, arguments);
 
-		// if true is set, also remove attribute from element
-		if (removeAttr) {
-			var $self = $(this);
-			
-			// remove from all matching elements
-			$self.each(function() {
-				$(this).removeAttr(keyData);
-			});
-		}
-
-		return ret;
+		return original;
 	};
 
 })(jQuery);
