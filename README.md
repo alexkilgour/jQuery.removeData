@@ -1,5 +1,5 @@
 # jQuery.removeData
-Extend jQuery [removeData()](https://api.jquery.com/removeData/) to also optionally remove the corresponding data-attribute on the element. Also extends to allow data attribute to be passed with or without ```data-```.
+Extend jQuery [removeData()](https://api.jquery.com/removeData/) to also optionally remove the corresponding data-attribute on the element. Also extends to allow data attribute value to be passed containing ```data-```.
 
 **Current Version:** 1.0.0
 
