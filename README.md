@@ -15,21 +15,29 @@ Call the ```removeData()``` method on any element with a data attribute.
 
 **HTML**
 ```html
-<div data-foo="selector" data-bar="value">content</div>
+<div data-foo="selector" data-bar="value" data-baz="value">content</div>
 ```
 
 **jQuery**  
 remove just data cache (original behaviour)  
 ```javascript
 $('div[data-foo=selector]').removeData('data-bar');  
-$('div[data-foo=selector]').removeData('bar');
+$('div[data-foo=selector]').removeData('bar');  
+$('div[data-foo=selector]').removeData('[data-bar, data-baz]');  
+$('div[data-foo=selector]').removeData('[bar, baz]');  
+$('div[data-foo=selector]').removeData('data-bar data-baz');  
+$('div[data-foo=selector]').removeData('bar baz');
 ```
 
 **jQuery**  
 removes data cache and attribute  
 ```javascript
 $('div[data-foo=selector]').removeData('data-bar', true);  
-$('div[data-foo=selector]').removeData('bar', true);
+$('div[data-foo=selector]').removeData('bar', true);  
+$('div[data-foo=selector]').removeData('[data-bar, data-baz]', true);  
+$('div[data-foo=selector]').removeData('[bar, baz]', true);  
+$('div[data-foo=selector]').removeData('data-bar data-baz', true);  
+$('div[data-foo=selector]').removeData('bar baz', true);
 ```
 
 ## Running the Unit Tests
