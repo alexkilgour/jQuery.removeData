@@ -32,5 +32,8 @@ $('div[data-foo=selector]').removeData('data-bar', true);
 $('div[data-foo=selector]').removeData('bar', true);
 ```
 
+## Running the Unit Tests
+Open ```test/index.html``` in a browser
+
 ## Feedback
 If you discover any issues or have questions regarding usage, please add an issue on GitHub.
