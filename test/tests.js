@@ -3,6 +3,8 @@
 /* Default Behaviour of removeData() */
 /* ----------------------------------- */
 
+QUnit.module('Default Behaviour of removeData()');
+
 QUnit.test('jQuery.data & removeData, default behaviour', function(assert) {
 	assert.expect(2);
 	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
@@ -243,6 +245,8 @@ QUnit.test('jQuery.data & removeData, default behaviour (null)', function(assert
 /* Extended Behaviour of removeData() */
 /* ----------------------------------- */
 
+QUnit.module('Extended Behaviour of removeData() when adding using jQuery.data()');
+
 QUnit.test('jQuery.data & removeData, extended behaviour (allow referencing with data-)', function(assert) {
 	assert.expect(2);
 	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
@@ -311,6 +315,8 @@ QUnit.test('jQuery.data & removeData, default behaviour (allow referencing with 
 		'elem.data(key) returns undefined'
 	);
 });
+
+QUnit.module('Extended Behaviour of removeData() when adding using jQuery.attr()');
 
 QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute)', function(assert) {
 	assert.expect(2);
@@ -417,8 +423,6 @@ QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute) (al
 	);
 });
 
-
-
 QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute) (allow referencing with data-) (array of values)', function(assert) {
 	assert.expect(6);
 	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
@@ -486,3 +490,556 @@ QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute) (al
 		'elem.attr(key) returns undefined'
 	);
 });
+
+QUnit.module('Extended Behaviour of removeData() when matching values using a single key');
+
+QUnit.test('jQuery.data & removeData, extended behaviour', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar', {values:'baz'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar', {values:'wrong'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar', {values:''});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar', {values:undefined});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar', {values:null});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar', {values:['baz','bloz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar', {values:'baz bloz'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+});
+
+QUnit.module('Extended Behaviour of removeData() when matching values using an array of keys');
+
+QUnit.test('jQuery.data & removeData, extended behaviour (single value)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData(['bar','boom'], {values:['baz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData(['bar','boom'], {values:['baz','bloz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData(['bar','boom'], {values:['baz','wrong']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData(['bar','boom'], {values:['baz','']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData(['bar','boom'], {values:'baz bloz'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData(['bar','boom'], {values:'baz wrong'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData(['bar','boom'], {values:'baz '});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+});
+
+QUnit.module('Extended Behaviour of removeData() when matching values using an space-separated string of values');
+
+QUnit.test('jQuery.data & removeData, extended behaviour (single value)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar boom', {values:['baz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar boom', {values:['baz','bloz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar boom', {values:['baz','wrong']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar boom', {values:['baz','']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar boom', {values:'baz bloz'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar boom', {values:'baz wrong'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.data & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(4);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute and check it exists
+	elem.data({'bar':'baz', 'boom':'bloz'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	// check it is removable as before
+	elem.removeData('bar boom', {values:'baz '});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+});
+

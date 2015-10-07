@@ -16,7 +16,9 @@
 		if (keys && typeof keys === 'string') {
 			keys = keys.split(' ');
 		}
-		if (options && options.values && typeof options.values === 'string') {
+		if (options && options.values === '') {
+			options.values = [''];
+		} else if (options && options.values && typeof options.values === 'string') {
 			options.values = options.values.split(' ');
 		}
 
@@ -31,16 +33,13 @@
 				// remove data- if present
 				if (keys[i].toString().substr(0, 5) === 'data-') {
 					keys[i] = keys[i].toString().substring(5);
-				} else {
-					keys[i] = keys[i].toString();
 				}
 
 				// store keys in data- format for attribute removal
 				attrValues.push('data-' + keys[i].toString());
-
 				// only remove if value matches
 				if (options && options.values && options.values.constructor === Array) {
-					if (typeof $self.data(keys[i]) !== 'undefined' && typeof options.values[i] !== 'undefined') {
+					if (typeof $self.data(keys[i]) !== 'undefined' && typeof options.values[i] !== 'undefined' && options.values[i] !== null) {
 						if ($self.data(keys[i]) !== options.values[i]) {
 							removeKeys.push(keys[i]);
 						}
@@ -54,6 +53,8 @@
 				if(position != -1) {
 					keys.splice(position, 1);
 					attrValues.splice(position, 1);
+					options.values.splice(position, 1);
+					removeKeys.splice(position, 1);
 				}
 			}
 
