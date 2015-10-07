@@ -234,11 +234,6 @@ QUnit.test('jQuery.data & removeData, default behaviour (allow referencing with 
 	);
 });
 
-/* ================= */
-/* ================= */
-/* ================= */
-/* ================= */
-
 QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute)', function(assert) {
 	assert.expect(2);
 	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
@@ -250,7 +245,7 @@ QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute)', f
 	);
 	// removing using extended removeData method also removes the attribute
 	assert.equal(
-		elem.removeData('foo', true).attr('data-foo'), undefined,
+		elem.removeData('foo', {removeAttr:true}).attr('data-foo'), undefined,
 		'elem.removeData(key, true).attr(key) returns undefined'
 	);
 });
@@ -270,7 +265,7 @@ QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute) (ar
 		'.attr getter/setter'
 	);
 	// check it is removable via array as before
-	elem.removeData(['bar','boom'], true);
+	elem.removeData(['bar','boom'], {removeAttr:true});
 	assert.equal(
 		elem.data('bar'), undefined,
 		'elem.data(key) returns undefined'
@@ -304,7 +299,7 @@ QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute) (sp
 		'.attr getter/setter'
 	);
 	// check it is removable via space-separated string as before
-	elem.removeData('bar boom', true);
+	elem.removeData('bar boom', {removeAttr:true});
 	assert.equal(
 		elem.data('bar'), undefined,
 		'elem.data(key) returns undefined'
@@ -339,7 +334,7 @@ QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute) (al
 	);
 	// removing using extended removeData method also removes the attribute
 	assert.equal(
-		elem.removeData('data-foo', true).attr('data-foo'), undefined,
+		elem.removeData('data-foo', {removeAttr:true}).attr('data-foo'), undefined,
 		'elem.removeData(key, true).attr(key) returns undefined'
 	);
 });
@@ -361,7 +356,7 @@ QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute) (al
 		'.attr getter/setter'
 	);
 	// check it is removable via array
-	elem.removeData(['data-bar','data-boom'], true);
+	elem.removeData(['data-bar','data-boom'], {removeAttr:true});
 	assert.equal(
 		elem.data('bar'), undefined,
 		'elem.data(key) returns undefined'
@@ -395,7 +390,7 @@ QUnit.test('jQuery.attr & removeData, extended behaviour (removes attribute) (al
 		'.attr getter/setter'
 	);
 	// check it is removable via space-separated string as before
-	elem.removeData('data-bar data-boom', true);
+	elem.removeData('data-bar data-boom', {removeAttr:true});
 	assert.equal(
 		elem.data('bar'), undefined,
 		'elem.data(key) returns undefined'
