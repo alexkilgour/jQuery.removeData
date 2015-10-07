@@ -41,7 +41,14 @@ $('div[data-foo=selector]').removeData('bar baz', true);
 ```
 
 ## Running the Unit Tests
-Open ```test/index.html``` in a browser
+Run the unit tests with a local server that supports PHP. Ensure that you run the tests from the "test" directory. No database is required. Pre-configured php local servers are available for Windows and Mac. Here are some options:
+
+- Windows: [WAMP download](http://www.wampserver.com/en/)
+- Mac: [MAMP download](http://www.mamp.info/en/index.html)
+- Linux: [Setting up LAMP](https://www.linux.com/learn/tutorials/288158-easy-lamp-server-installation)
+- [Mongoose (most platforms)](http://code.google.com/p/mongoose/)
+
+Ensure you select the "Enable coverage" option to see test coverage provided by [Blanket.js](http://blanketjs.org/).
 
 ## Feedback
 If you discover any issues or have questions regarding usage, please add an issue on GitHub.
