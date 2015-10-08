@@ -1,7 +1,10 @@
 # jQuery.removeData
-Extend jQuery [removeData()](https://api.jquery.com/removeData/) to also optionally remove the corresponding data-attribute on the element. Also extends to allow data attribute value to be passed containing ```data-```.
+Extend jQuery [removeData()](https://api.jquery.com/removeData/) to add the following functionality:
+- Optionally remove the corresponding data-attribute on the element (if added without using `.data()`)
+- Only remove the attribute if the value matches one passed in the options
+- Allow data attribute value to be passed containing `data-`
 
-**Current Version:** 1.1.0
+**Current Version:** 2.0.0
 
 ## Installation
 Include [jQuery](http://jquery.com/download) and `jQuery.removeData.js` in your HTML document. Supports jQuery version 1.7+
@@ -32,12 +35,24 @@ $('div[data-foo=selector]').removeData('bar baz');
 **jQuery**  
 removes data cache and attribute  
 ```javascript
-$('div[data-foo=selector]').removeData('data-bar', true);  
-$('div[data-foo=selector]').removeData('bar', true);  
-$('div[data-foo=selector]').removeData('[data-bar, data-baz]', true);  
-$('div[data-foo=selector]').removeData('[bar, baz]', true);  
-$('div[data-foo=selector]').removeData('data-bar data-baz', true);  
-$('div[data-foo=selector]').removeData('bar baz', true);
+$('div[data-foo=selector]').removeData('data-bar', {
+  removeAttr: true
+});  
+$('div[data-foo=selector]').removeData('bar', {
+  removeAttr: true
+});  
+$('div[data-foo=selector]').removeData('[data-bar, data-baz]', {
+  removeAttr: true
+});  
+$('div[data-foo=selector]').removeData('[bar, baz]', {
+  removeAttr: true
+});  
+$('div[data-foo=selector]').removeData('data-bar data-baz', {
+  removeAttr: true
+});  
+$('div[data-foo=selector]').removeData('bar baz', {
+  removeAttr: true
+});
 ```
 
 ## Running the Unit Tests
