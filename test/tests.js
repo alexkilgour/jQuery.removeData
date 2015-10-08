@@ -1043,3 +1043,858 @@ QUnit.test('jQuery.data & removeData, extended behaviour (space-separated string
 	);
 });
 
+QUnit.module('Extended Behaviour of removeData() when matching values using a single key. Also removing attribute');
+
+QUnit.test('jQuery.attr & removeData, extended behaviour', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar', {removeAttr:true, values:'baz'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar', {removeAttr:true, values:'wrong'});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+	assert.equal(
+		elem.attr('data-bar'), 'baz',
+		'elem.attr(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar', {removeAttr:true, values:''});
+	assert.equal(
+		elem.data('bar'), 'baz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+	assert.equal(
+		elem.attr('data-bar'), 'baz',
+		'elem.attr(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar', {removeAttr:true, values:undefined});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar', {removeAttr:true, values:null});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar', {removeAttr:true, values:['baz','bloz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar', {removeAttr:true, values:'baz bloz'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns bloz'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.module('Extended Behaviour of removeData() when matching values using an array of keys. Also removing attribute');
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (single value)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:['baz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (single value)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:['baz', undefined]});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (single value)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:['baz', null]});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (single value)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:['baz', '']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:['baz','bloz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:['baz','wrong']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:'baz bloz'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:'baz wrong'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData(['bar','boom'], {removeAttr:true, values:'baz '});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.module('Extended Behaviour of removeData() when matching values using an space-separated string of values. Also removing attribute');
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (single value)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:['baz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:['baz','bloz']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:['baz','wrong']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:['baz','']});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:['baz', undefined]});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (array of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:['baz', null]});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:'baz bloz'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:'baz wrong'});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
+
+QUnit.test('jQuery.attr & removeData, extended behaviour (space-separated string of values)', function(assert) {
+	assert.expect(6);
+	var elem = jQuery('<div/>').appendTo('#qunit-fixture');
+
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-bar', 'baz').attr('data-bar'), 'baz',
+		'.attr getter/setter'
+	);
+	// add data attribute via attr and check it exists
+	assert.strictEqual(
+		elem.attr('data-boom', 'bloz').attr('data-boom'), 'bloz',
+		'.attr getter/setter'
+	);
+	// removing using extended removeData method also removes the attribute
+	elem.removeData('bar boom', {removeAttr:true, values:'baz '});
+	assert.equal(
+		elem.data('bar'), undefined,
+		'elem.data(key) returns undefined'
+	);
+	assert.equal(
+		elem.data('boom'), 'bloz',
+		'elem.data(key) returns value'
+	);
+	assert.equal(
+		elem.attr('data-bar'), undefined,
+		'elem.attr(key) returns undefined'
+	);
+	assert.equal(
+		elem.attr('data-boom'), 'bloz',
+		'elem.attr(key) returns value'
+	);
+});
