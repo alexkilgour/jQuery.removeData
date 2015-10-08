@@ -79,11 +79,11 @@ These will also remove **both** the bar and boom attributes
 $('div[data-foo=selector]').removeData(['bar','boom'], {values:[undefined, 'baz']});
 $('div[data-foo=selector]').removeData(['bar','boom'], {values:['baz', null]});
 ```
-This will remove **just** the bar attribute
+This will remove **just** the bar attribute  
+*note the space after baz. this will translate to ['baz','']*
 ```javascript
 $('div[data-foo=selector]').removeData(['bar','boom'], {values:'baz '});
 ```
-*note the space after baz. this will translate to ['baz','']*
 
 **For more edge cases, see the test suite**
 
