@@ -38,18 +38,23 @@ removes data cache and attribute
 $('div[data-foo=selector]').removeData('data-bar', {
   removeAttr: true
 });  
+
 $('div[data-foo=selector]').removeData('bar', {
   removeAttr: true
 });  
+
 $('div[data-foo=selector]').removeData('[data-bar, data-baz]', {
   removeAttr: true
 });  
+
 $('div[data-foo=selector]').removeData('[bar, baz]', {
   removeAttr: true
 });  
+
 $('div[data-foo=selector]').removeData('data-bar data-baz', {
   removeAttr: true
 });  
+
 $('div[data-foo=selector]').removeData('bar baz', {
   removeAttr: true
 });
