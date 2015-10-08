@@ -44,7 +44,7 @@ $('div[data-foo=selector]').removeData('bar', {
 
 $('div[data-foo=selector]').removeData('bar', {
   removeAttr: true,
-  values: 'value'
+  values: 'baz'
 });
 ```
 
