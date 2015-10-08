@@ -18,7 +18,7 @@ Call the ```removeData()``` method on any element with a data attribute.
 
 **HTML**
 ```html
-<div data-foo="selector" data-bar="value" data-baz="value">content</div>
+<div data-foo="selector" data-bar="baz" data-boom="bloz">content</div>
 ```
 
 **jQuery**  
@@ -35,15 +35,34 @@ $('div[data-foo=selector]').removeData('bar', {
 });
 ```
 
+**jQuery**  
+removes data cache (and optionally attribute) if value matches 
+```javascript
+$('div[data-foo=selector]').removeData('bar', {
+  values: 'baz'
+});  
+
+$('div[data-foo=selector]').removeData('bar', {
+  removeAttr: true,
+  values: 'value'
+});
+```
+
 **Variations**  
 The attribute value can cater for the following variations
 ```javascript
 $('div[data-foo=selector]').removeData('bar');  
 $('div[data-foo=selector]').removeData('data-bar');  
-$('div[data-foo=selector]').removeData('[bar, baz]');  
-$('div[data-foo=selector]').removeData('[data-bar, data-baz]');  
-$('div[data-foo=selector]').removeData('bar baz');  
-$('div[data-foo=selector]').removeData('data-bar data-baz');
+$('div[data-foo=selector]').removeData('[bar, boom]');  
+$('div[data-foo=selector]').removeData('[data-bar, data-boom]');  
+$('div[data-foo=selector]').removeData('bar boom');  
+$('div[data-foo=selector]').removeData('data-bar data-boom');
+```
+The values option can cater for the following variations
+```javascript
+$('div[data-foo=selector]').removeData('bar', {values: 'baz'});  
+$('div[data-foo=selector]').removeData('[bar, boom]', {values: ['baz','bloz']});  
+$('div[data-foo=selector]').removeData('bar boom', {values: 'baz bloz'});  
 ```
 
 ## Running the Unit Tests
