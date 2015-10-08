@@ -65,6 +65,28 @@ $('div[data-foo=selector]').removeData('[bar, boom]', {values: ['baz','bloz']});
 $('div[data-foo=selector]').removeData('bar boom', {values: 'baz bloz'});  
 ```
 
+### Edge cases
+This will remove **both** the bar and boom attributes
+```javascript
+$('div[data-foo=selector]').removeData(['bar','boom'], {values:'baz'});
+```
+But this will remove **just** the bar attribute
+```javascript
+$('div[data-foo=selector]').removeData(['bar','boom'], {values:['baz','']});
+```
+These will also remove **both** the bar and boom attributes
+```javascript
+$('div[data-foo=selector]').removeData(['bar','boom'], {values:[undefined, 'baz']});
+$('div[data-foo=selector]').removeData(['bar','boom'], {values:['baz', null]});
+```
+This will remove **just** the bar attribute
+```javascript
+$('div[data-foo=selector]').removeData(['bar','boom'], {values:'baz '});
+```
+*note the space after baz. this will translate to ['baz','']*
+
+**For more edge cases, see the test suite**
+
 ## Running the Unit Tests
 Run the unit tests with a local server that supports PHP. Ensure that you run the tests from the **test** directory. No database is required. Pre-configured php local servers are available for Windows and Mac. Here are some options:
 
